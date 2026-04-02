@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokalizem - Détection Personne/Pistolet</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #ffffff; color: rgb(116, 110, 110); }
+        .controls { margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px; display: inline-block; }
+        button, input { margin: 0 10px; padding: 10px 15px; cursor: pointer; font-size: 14px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #007bff; color: white; border: none; }
+        button:hover { background-color: #0056b3; }
+        #container { position: relative; display: inline-block; margin-top: 20px; }
+        #canvas { position: absolute; top: 0; left: 0; z-index: 10; }
+        /* La vidéo et l'image ont les mêmes dimensions max pour un rendu propre */
+        #video, #image-preview { display: none; max-width: 640px; border: 2px solid #333; border-radius: 8px; }
+        #status { margin-top: 15px; font-weight: bold; color: #ff9800; }
+    </style>
+</head>
+
+<body>
+
+    <h2>Système de Détection (YOLO)</h2>
+    <div id="status">Chargement du modèle TensorFlow.js...</div>
+
+    <div class="controls">
+        <button id="btn-camera">Activer Caméra</button>
+        <button id="btn-capture" style="display:none;">Prendre une photo</button>
+        <input type="file" id="file-upload" accept="image/*">
+    </div>
+
+    <div id="container">
+        <video id="video" autoplay playsinline muted></video>
+        <img id="image-preview" alt="Aperçu">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="js/app.js"></script>
+    <script src="js/interface.js"></script>
+
+</body>
+</html>
